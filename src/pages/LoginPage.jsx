@@ -7,7 +7,7 @@ function LoginPage({
     checkLogin,
   }) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#3B101B] via-[#702333] to-[#A34352] p-6">
+      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-[#3B101B] via-[#702333] to-[#A34352] p-6">
         <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
             <h1 className="text-3xl font-bold text-red-900 mb-4 text-center">SMI Dashboard</h1>
             <p className="text-gray-500 mb-6 text-center">Silakan login untuk melanjutkan</p>
