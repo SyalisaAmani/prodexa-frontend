@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react"
 import { getAllProducts } from '../services/ProductService'
-
+import ProductCard from "../components/ProductCard";
+import { useNavigate } from "react-router-dom";
 
 function Catalog() {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleDetailClick = (product) => {
+        navigate(`/products/${product.id}`);
+    };
 
     useEffect(() => {
         async function fetchProducts() {
@@ -32,7 +39,19 @@ function Catalog() {
             {error && <p>{error}</p>}
 
             {!isLoading && !error && (
-                <p>Total products : {products.length}</p>
+                <>
+                    <p>Total products : {products.length}</p>
+
+                    <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {products.map((product) => (  
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                onDetailClick={handleDetailClick}
+                             />
+                        ))}
+                    </div>
+                </>
             )}
         </main>
     )
