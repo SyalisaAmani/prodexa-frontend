@@ -1,31 +1,74 @@
-import { LogOut } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
 
-function NavBar({onLogout}) {
+function Navbar() {
     return (
-        <nav className="sticky top-0 z-40 mb-8 rounded-b-2xl border border-gray-100 bg-white px-6 py-5 shadow-md">
-            <div className="container mx-auto flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
-                <div className="flex items-center gap-3">
-                    <img
-                        src="/img/logo.png"
-                        alt="Logo SMI"
-                        className="h-12 w-12 rounded-xl bg-white object-contain p-1"
-    />
-                    <div className="flex flex-col">
-                        <h1 className="text-xl font-bold tracking-tight text-red-900">SMI Dashboard</h1>
-                        <h3 className="mt-1 text-sm text-gray-500">Selamat Datang di Katalog Produk</h3>
-                    </div>
+        <nav className="sticky top-0 z-50 border-b border-[#E5E0D8] bg-[#FAF8F4]/95 px-6 py-5 backdrop-blur-sm">
+            <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 sm:flex-row sm:justify-between">
+
+                {/* Logo */}
+                <Link to="/" className="text-2xl font-bold tracking-wide text-[#242424]">
+                    PROD<span className="text-[#A99A84]">EXA</span>
+                </Link>
+
+                {/* Navigation */}
+                <div className="flex items-center gap-5 text-xs font-medium sm:gap-8 sm:text-sm">
+                    <NavLink
+                        to="/"
+                        end
+                        className={({ isActive }) =>
+                            `transition-colors duration-300 ${
+                                isActive
+                                    ? "text-[#242424]"
+                                    : "text-[#77736C] hover:text-[#242424]"
+                            }`
+                        }
+                    >
+                        Home
+                    </NavLink>
+
+                    <NavLink
+                        to="/catalog"
+                        className={({ isActive }) =>
+                            `transition-colors duration-300 ${
+                                isActive
+                                    ? "text-[#242424]"
+                                    : "text-[#77736C] hover:text-[#242424]"
+                            }`
+                        }
+                    >
+                        Catalog
+                    </NavLink>
+
+                    <NavLink
+                        to="/wishlist"
+                        className={({ isActive }) =>
+                            `transition-colors duration-300 ${
+                                isActive
+                                    ? "text-[#242424]"
+                                    : "text-[#77736C] hover:text-[#242424]"
+                            }`
+                        }
+                    >
+                        Wishlist
+                    </NavLink>
+
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) =>
+                            `transition-colors duration-300 ${
+                                isActive
+                                    ? "text-[#242424]"
+                                    : "text-[#77736C] hover:text-[#242424]"
+                            }`
+                        }
+                    >
+                        Login
+                    </NavLink>
                 </div>
-                <button
-                type="button"
-                onClick={onLogout}
-                className="flex items-center gap-2 rounded-lg bg-red-900 px-4 py-2 text-white shadow-sm duration-200 hover:bg-red-800 active:scale-95"
-                >
-                <LogOut size={18} />
-                Logout
-                </button>
+
             </div>
         </nav>
     );
 }
 
-export default NavBar;
+export default Navbar;
