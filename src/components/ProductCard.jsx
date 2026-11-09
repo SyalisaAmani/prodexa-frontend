@@ -1,6 +1,6 @@
-import { Info } from "lucide-react";
+import { Info, Heart } from "lucide-react";
 
-function ProductCard({ product, onDetailClick  }) {
+function ProductCard({ product, onDetailClick, onWishlistClick, isWishlisted  }) {
     
     return (
     <article className="group overflow-hidden rounded-2xl border border-[#E5E0D8] bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
@@ -23,7 +23,28 @@ function ProductCard({ product, onDetailClick  }) {
         <hr className="my-4 border-gray-200" />
 
         <div className="mt-4 flex items-center justify-between gap-3">
-            <p className="text-lg font-bold tracking-tight text-[#242424]">Rp {product.price.toLocaleString('id-ID')}</p>
+
+            <button
+                type="button"
+                onClick={() => onWishlistClick(product)}
+                aria-label={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border transition duration-200 ${
+                    isWishlisted
+                        ? "border-[#B45345] bg-[#B45345]/10 text-[#B45345]"
+                        : "border-[#E5E0D8] text-[#77736C] hover:border-[#B45345] hover:text-[#B45345]"
+                }`}
+            >
+                <Heart
+                    size={18}
+                    fill={isWishlisted ? "currentColor" : "none"}
+                />
+            </button>
+
+            <p className="text-lg font-bold tracking-tight text-[#242424]">$ {product.price.toLocaleString('en-US', {
+                minimumFractionDigits: 2,maximumFractionDigits: 2
+                })}
+            </p>
+            
             <button type="button"  onClick={() => onDetailClick(product)} className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#242424] px-3 py-2.5 text-sm font-medium text-white transition duration-200 hover:bg-[#3A3A3A] active:scale-95">
                 <Info size={14} />
                 Detail

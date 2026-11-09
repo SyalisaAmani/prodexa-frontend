@@ -4,7 +4,7 @@ import { getAllProducts } from "../services/ProductService";
 import ProductCard from "../components/ProductCard";
 import { useNavigate } from "react-router-dom";
 
-function Catalog() {
+function Catalog({ wishlistService, isLoggedIn }) {
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -179,6 +179,15 @@ function Catalog() {
                                     key={product.id}
                                     product={product}
                                     onDetailClick={handleDetailClick}
+                                    isWishlisted={wishlistService.isInWishlist(product.id)}
+                                    onWishlistClick={(selectedProduct) => {
+                                        if (!isLoggedIn) {
+                                            navigate("/login");
+                                            return;
+                                        }
+
+                                        wishlistService.toggleWishlist(selectedProduct);
+                                    }}
                                 />
                             ))
                         ) : (

@@ -5,7 +5,7 @@ import { getAllProducts } from "../services/ProductService";
 import { ArrowRight } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 
-function Home() {
+function Home({ wishlistService, isLoggedIn }) {
     const navigate = useNavigate();
 
     // Hero Products State
@@ -222,8 +222,19 @@ function Home() {
                 <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
                     {featuredProducts.map((product) => (
                         <ProductCard
-                        key={product.id}
-                        product={product}/>
+                            key={product.id}
+                            product={product}
+                            onDetailClick={() => navigate(`/products/${product.id}`)}
+                            isWishlisted={wishlistService.isInWishlist(product.id)}
+                            onWishlistClick={(selectedProduct) => {
+                                if (!isLoggedIn) {
+                                    navigate("/login");
+                                    return;
+                                }
+
+                                wishlistService.toggleWishlist(selectedProduct);
+                            }}
+                        />
                         ))}
                 </div>
 

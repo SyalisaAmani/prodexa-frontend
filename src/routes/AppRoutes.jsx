@@ -1,16 +1,30 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
 import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
+import Wishlist from "../pages/Wishlist";
 
-function AppRoutes({ loginService }) {
+function AppRoutes({ loginService, wishlistService }) {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+                path="/"
+                element={
+                    <Home 
+                    wishlistService={wishlistService}
+                    isLoggedIn={loginService.isLoggedIn} />
+                }
+            />
 
-            <Route path="/catalog" element={<Catalog />} />
+            <Route
+                path="/catalog"
+                element={
+                    <Catalog wishlistService={wishlistService}
+                    isLoggedIn={loginService.isLoggedIn} />
+                }
+            />
 
             <Route path="/products/:id" element={<ProductDetail />} />
 
@@ -26,7 +40,16 @@ function AppRoutes({ loginService }) {
                 } 
             />
 
-            <Route path="/wishlist" element={<div>Wishlist</div>} />
+            <Route
+                path="/wishlist"
+                element={
+                    loginService.isLoggedIn ? (
+                        <Wishlist wishlistService={wishlistService} />
+                    ) : (
+                        <Navigate to="/login" replace />
+                    )
+                }
+            />
 
             <Route path="*" element={<div>404 - Page not found!</div>} />
         </Routes>
