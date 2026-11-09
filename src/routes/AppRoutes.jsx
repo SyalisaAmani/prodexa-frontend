@@ -5,6 +5,7 @@ import Catalog from "../pages/Catalog";
 import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
 import Wishlist from "../pages/Wishlist";
+import NotFound from "../pages/NotFound";
 
 function AppRoutes({ loginService, wishlistService }) {
     return (
@@ -26,7 +27,15 @@ function AppRoutes({ loginService, wishlistService }) {
                 }
             />
 
-            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route
+                path="/products/:id"
+                element={
+                    <ProductDetail
+                        wishlistService={wishlistService}
+                        isLoggedIn={loginService.isLoggedIn}
+                    />
+                }
+            />
 
             <Route
             path="/login"
@@ -51,7 +60,7 @@ function AppRoutes({ loginService, wishlistService }) {
                 }
             />
 
-            <Route path="*" element={<div>404 - Page not found!</div>} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }

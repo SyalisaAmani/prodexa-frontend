@@ -2,10 +2,12 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProductById } from "../services/ProductService";
+import { Heart } from "lucide-react";
 
-function ProductDetail() {
+function ProductDetail({ wishlistService, isLoggedIn}) {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { toggleWishlist, isInWishlist } = wishlistService;
 
     const [product, setProduct] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -161,6 +163,29 @@ function ProductDetail() {
                             <p className="text-base leading-7 text-stone-600">
                                 {product.description}
                             </p>
+
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    if (!isLoggedIn) {
+                                        navigate("/login");
+                                        return;
+                                    }
+
+                                    toggleWishlist(product);
+                                }}
+                                className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg border px-5 py-3 text-sm font-semibold transition ${
+                                    isInWishlist(product.id)
+                                        ? "border-[#242424] bg-[#242424] text-white"
+                                        : "border-[#242424] bg-white text-[#242424] hover:bg-[#242424] hover:text-white"
+                                }`}
+                            >
+                                <Heart
+                                    size={18}
+                                    fill={isInWishlist(product.id) ? "currentColor" : "none"}
+                                />
+                                {isInWishlist(product.id) ? "Remove from Wishlist" : "Add to Wishlist"}
+                            </button>
 
                             {/* Additional Information */}
                             <div className="mt-6 space-y-3 border-t border-[#E5E0D8] pt-5 text-sm">
