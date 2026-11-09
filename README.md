@@ -20,6 +20,26 @@ Prodexa is a responsive product catalog web application built with React.js. It 
 - **Responsive Design** — Supports desktop, tablet, and mobile screens.
 - **Custom Branding** — Uses a minimalist Charcoal & Beige theme with a custom logo and favicon.
 
+## Screenshots
+
+### Home Page
+![Prodexa Home](prodexa/home.jpeg)
+
+### Product Catalog
+![Product Catalog](prodexa/catalog.jpeg)
+
+### Product Detail
+![Product Detail](prodexa/productDetail.jpeg)
+
+### Wishlist
+![Wishlist](prodexa/wishlist.jpeg)
+
+### Login
+![Login Page](prodexa/login.jpeg)
+
+### Not Found
+![404 Not Found](prodexa/notFound.jpeg)
+
 ## Technologies
 
 - React.js
