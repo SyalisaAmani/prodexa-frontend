@@ -91,22 +91,46 @@ The wishlist feature is available only to authenticated users.
 ## Project Structure
 
 ```text
-src/
-├── assets/
-├── components/
-├── pages/
-├── routes/
-├── services/
-├── App.jsx
-├── App.css
-└── index.css
-
-public/
-└── prodexa-logo.webp
-
-index.html
-package.json
-README.md
+prodexa/
+├── public/
+│   └── prodexa-logo.webp
+│
+├── src/
+│   ├── assets/
+│   │   ├── hero.png
+│   │   ├── react.svg
+│   │   └── vite.svg
+│   │
+│   ├── components/
+│   │   ├── Footer.jsx
+│   │   ├── NavBar.jsx
+│   │   └── ProductCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Catalog.jsx
+│   │   ├── DashboardPage.jsx
+│   │   ├── Home.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── NotFound.jsx
+│   │   ├── ProductDetail.jsx
+│   │   └── Wishlist.jsx
+│   │
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   │
+│   ├── services/
+│   │   ├── LoginService.js
+│   │   ├── ProductService.js
+│   │   └── WishlistService.js
+│   │
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── index.html
+├── package.json
+└── README.md
 ```
 
 ## Implementation Notes
