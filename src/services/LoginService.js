@@ -12,17 +12,19 @@ export const useLoginService = () => {
   // Validasi login
   const checkLogin = () => {
     if (!username.trim() || !password.trim()) {
-      setErrorMessage('Username dan password wajib diisi');
+      setErrorMessage('You must enter your username and password');
       return;
     }
 
-    if (username === 'admin' && password === 'smi123') {
-      setErrorMessage('');
-      sessionStorage.setItem('isLoggedIn', 'true');
-      setIsLoggedIn(true);
-    } else {
-      setErrorMessage('Username atau password salah');
-    }
+    if (username === 'user' && password === 'prodexa123') {
+    setErrorMessage('');
+    sessionStorage.setItem('isLoggedIn', 'true');
+    setIsLoggedIn(true);
+    return true;
+  } else {
+    setErrorMessage('Incorrect Username or Password');
+    return false;
+  }
   };
 
   // Fungsi logout

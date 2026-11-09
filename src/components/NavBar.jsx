@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ isLoggedIn, onLogout}) {
     return (
         <nav className="sticky top-0 z-50 border-b border-[#E5E0D8] bg-[#FAF8F4]/95 px-6 py-5 backdrop-blur-sm">
             <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 sm:flex-row sm:justify-between">
@@ -52,18 +52,27 @@ function Navbar() {
                         Wishlist
                     </NavLink>
 
-                    <NavLink
-                        to="/login"
-                        className={({ isActive }) =>
-                            `transition-colors duration-300 ${
-                                isActive
-                                    ? "text-[#242424]"
-                                    : "text-[#77736C] hover:text-[#242424]"
-                            }`
-                        }
-                    >
-                        Login
-                    </NavLink>
+                    {isLoggedIn ? (
+                        <button
+                            onClick={onLogout}
+                            className="text-[#77736C] transition-colors duration-300 hover:text-[#242424]"
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                `transition-colors duration-300 ${
+                                    isActive
+                                        ? "text-[#242424]"
+                                        : "text-[#77736C] hover:text-[#242424]"
+                                }`
+                            }
+                        >
+                            Login
+                        </NavLink>
+                    )}
                 </div>
 
             </div>
