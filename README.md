@@ -1,21 +1,24 @@
 
-# SMI Dashboard
+# Prodexa — Product Catalog
 
-SMI Dashboard is a responsive product catalog web application built with React.js. The application provides a simple login interface, displays product data from an external API, and allows users to search and view product details.
+Prodexa is a responsive product catalog web application built with React.js. It allows users to explore products, view detailed product information, and save their favorite products to a personal wishlist.
 
 ## Features
 
-- **Login and Logout** — Simple demo authentication with input validation.
 - **Product Catalog** — Fetches and displays product data from DummyJSON API.
-- **Loading State** — Displays a loading message while product data is being fetched.
-- **Error Handling** — Handles API request failures and invalid product data.
-- **Product Search** — Filters products by title in real time.
-- **Search Empty State** — Displays a message when no products match the search query, with a button to return to the full catalog.
-- **Product Details Modal** — Displays the selected product's image, title, description, and price.
-- **Responsive Layout** — Uses a responsive product grid for desktop, tablet, and mobile screens.
-- **Sticky Navigation Bar** — Keeps the navigation bar visible while scrolling.
-- **Back-to-Top Button** — Allows users to smoothly return to the top of the page.
-- **Custom UI Theme** — Uses a maroon color palette, custom logo, and browser favicon.
+- **Home Page** — Displays featured products and product highlights.
+- **Product Search** — Helps users find products in the catalog.
+- **Product Details** — Displays product images, descriptions, prices, ratings, brand, and stock information.
+- **Product Gallery** — Allows users to preview different product images.
+- **User Authentication** — Provides a simple demo login and logout experience.
+- **Wishlist** — Allows authenticated users to save and remove favorite products.
+- **Wishlist Persistence** — Stores wishlist data in localStorage.
+- **Protected Wishlist Route** — Requires users to log in before accessing their wishlist.
+- **Loading and Error States** — Handles loading processes, API errors, and unavailable products.
+- **Empty State** — Displays helpful messages when the wishlist contains no products.
+- **404 Not Found Page** — Provides a custom page for unavailable routes.
+- **Responsive Design** — Supports desktop, tablet, and mobile screens.
+- **Custom Branding** — Uses a minimalist Charcoal & Beige theme with a custom logo and favicon.
 
 ## Technologies
 
@@ -23,10 +26,12 @@ SMI Dashboard is a responsive product catalog web application built with React.j
 - JavaScript (ES6+)
 - Vite
 - Tailwind CSS
+- React Router DOM
 - Lucide React
 - Fetch API
 - DummyJSON API
-- HTML5 and CSS3
+- HTML5
+- CSS3
 - Git and GitHub
 
 ## API
@@ -35,7 +40,7 @@ Product data is retrieved from:
 
 https://dummyjson.com/products
 
-The application uses the product data returned by the API to display the catalog and product details.
+The application uses the DummyJSON API to retrieve product information and display the product catalog and details.
 
 ## Getting Started
 
@@ -58,10 +63,10 @@ Make sure you have the following installed:
 2. Navigate to the project directory:
 
    ```bash
-   cd YOUR_PROJECT_FOLDER
+   cd prodexa
    ```
 
-3. Install the dependencies:
+3. Install dependencies:
 
    ```bash
    npm install
@@ -73,22 +78,15 @@ Make sure you have the following installed:
    npm run dev
    ```
 
-5. Open the local URL displayed in your terminal, usually:
+5. Open the local URL displayed in your terminal.
 
-   ```text
-   http://localhost:5173
-   ```
+## Demo Authentication
 
-## Demo Login
+Prodexa uses simple client-side authentication for demonstration purposes.
 
-Use the following credentials to access the dashboard:
+The wishlist feature is available only to authenticated users.
 
-| Field | Value |
-|---|---|
-| Username | `admin` |
-| Password | `smi123` |
-
-**Note:** These credentials are intended for demonstration purposes only. This application uses simple client-side credential validation and does not implement production authentication.
+**Note:** This is a demo authentication system and does not implement production-level security or server-side authentication.
 
 ## Project Structure
 
@@ -96,46 +94,49 @@ Use the following credentials to access the dashboard:
 src/
 ├── assets/
 ├── components/
-│   ├── NavBar.jsx
-│   └── ProductCard.jsx
 ├── pages/
-│   ├── DashboardPage.jsx
-│   └── LoginPage.jsx
+├── routes/
 ├── services/
-│   └── ProductService.js
 ├── App.jsx
 ├── App.css
-├── index.css
-└── main.jsx
+└── index.css
 
 public/
-└── img/
-    └── logo.png
+└── prodexa-logo.webp
 
 index.html
 package.json
+README.md
 ```
 
 ## Implementation Notes
 
-- React hooks such as `useState` and `useEffect` manage application state and API requests.
-- Props are used to pass product data and event handlers between components.
-- Asynchronous API requests use `async/await` and the Fetch API.
-- Conditional rendering handles login state, loading state, API errors, empty search results, and product details.
-- Tailwind CSS is used to style the interface and implement responsive layouts.
+- React Hooks such as `useState` and `useEffect` manage application state and API requests.
+- React Router DOM handles page navigation and protected routes.
+- Reusable components are used to maintain a consistent interface.
+- Service functions separate application logic from UI components.
+- Fetch API and async/await handle external API requests.
+- Conditional rendering handles loading, error, empty, and authenticated states.
+- localStorage persists wishlist data between browser sessions.
+- Tailwind CSS provides responsive styling and consistent UI design.
 
-## Testing Checklist
+## Testing
 
-- [ ] Login with valid demo credentials.
-- [ ] Verify that invalid or empty credentials are handled.
-- [ ] Verify that products load from the API.
-- [ ] Search for an existing product.
-- [ ] Search for a product that does not exist and return to the full catalog.
-- [ ] Open and close the product details modal.
-- [ ] Verify the layout on desktop, tablet, and mobile screens.
-- [ ] Test logout and confirm that the dashboard is no longer displayed.
-- [ ] Verify the loading and API error states.
+- [ ] Browse products on the Home page.
+- [ ] Open the Product Catalog.
+- [ ] Search for products.
+- [ ] Open product details.
+- [ ] Switch product gallery images.
+- [ ] Test login and logout.
+- [ ] Add products to Wishlist.
+- [ ] Remove products from Wishlist.
+- [ ] Verify wishlist persistence after refreshing.
+- [ ] Verify protected Wishlist access.
+- [ ] Test loading, error, and empty states.
+- [ ] Test the 404 Not Found page.
+- [ ] Verify responsive layouts.
+- [ ] Run ESLint and production build.
 
 ## Author
 
-Developed as a Front-End Engineer coding test project.
+Developed as a personal Front-End Developer portfolio project.
